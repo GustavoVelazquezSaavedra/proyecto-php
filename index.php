@@ -47,7 +47,7 @@
             <!--BARRA LATERAL-->
             <aside id="sidebar">
                 <div id="login" class="block-aside">
-                    <h3>Identificate</h3>
+                    <h3>Identificarse</h3>
                     <form action="login.php" method="POST">
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email"/>
@@ -57,7 +57,7 @@
                     </form>
                 </div>
                 <div id="register" class="block-aside">
-                    <h3>Registrate</h3>
+                    <h3>Registrarse</h3>
                     <form action="register.php" method="POST">
                         <label for="nombres">Nombre/s: </label>
                         <input type="text" name="nombres" id="nombres"/>
