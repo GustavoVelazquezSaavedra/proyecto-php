@@ -42,6 +42,7 @@
                   </li>
               </ul>
           </nav>
+          <div class="clearfix"></div>
         </header>
         <div id="container">
             <!--BARRA LATERAL-->
