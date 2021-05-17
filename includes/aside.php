@@ -21,7 +21,7 @@
                 <input type="email" name="email" id="email" />
                 <label for="password">Contraseña</label>
                 <input type="password" name="password" id="password" />
-                <input type="submit" value="Registrarse" />
+                <input type="submit" name="submit" value="Registrarse" />
             </form>
         </div>
     </aside>
