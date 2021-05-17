@@ -1,8 +1,10 @@
 
 <?php 
 
+session_start();
+
 if(isset($_POST)){
-    /* Comprobar que llegue las informaciones por post */
+    /* Check that the information arrives by post*/
     
     $nombres = isset($_POST['nombres']) ? $_POST['nombres']: false;
     $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : false;
@@ -18,14 +20,14 @@ if(isset($_POST)){
         $nombre_validate = true;
     }else{
         $nombre_validate = false;
-        $errrores['nombres'] = 'El "Nombres" no es válido';
+        $errrores['nombres'] = 'El campo "Nombres" no es válido.';
     }
     // Last name field validation
     if(!empty($apellidos) && !is_numeric($apellidos) && !preg_match('/[0-9]/', $apellidos)){
         $apellidos_validate = true;
     }else{
         $apellidos_validate = false;
-        $errrores['apellidos'] = 'El campo "Apellidos" no es válido';
+        $errrores['apellidos'] = 'El campo "Apellidos" no es válido.';
     }
 
     // Email field validation
@@ -33,7 +35,7 @@ if(isset($_POST)){
         $email_validate = true;
     }else{
         $email_validate = false;
-        $errrores['email'] = 'El campo "Email" no es válido';
+        $errrores['email'] = 'El campo "Email" no es válido.';
     }
 
     // Password field validation
@@ -41,7 +43,7 @@ if(isset($_POST)){
         $password_validate = true;
     }else{
         $password_validate = false;
-        $errrores['password'] = 'El campo "Contraseña" esta vacía';
+        $errrores['password'] = 'El campo "Contraseña" esta vacía.';
     }
 
     $save_users = false;
@@ -49,8 +51,10 @@ if(isset($_POST)){
     if(count($errrores)==0){
         $save_users = true;
         // Insert user in database
+
     }else{
-        
+        $_SESSION['errores'] = $errrores;
+        header('Location: index.php');
     }
 
 
