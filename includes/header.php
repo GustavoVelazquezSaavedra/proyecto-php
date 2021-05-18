@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <title>Blog Videojuegos</title>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 </head>
 
 <body>

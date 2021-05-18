@@ -64,7 +64,7 @@ if(isset($_POST)){
         $query = mysqli_query($db, $sql);
         
         if($query){
-            $_SESSION['completado'] = 'El resitro se ha completado con éxito.';
+            $_SESSION['completado'] = 'El registro se ha completado con éxito.';
         }else{
             $_SESSION['errores']['general'] = 'Fallo al guardar el usuario!.';
             

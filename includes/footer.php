@@ -7,3 +7,12 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+    //Borrando las alertas
+    $(document).ready(function() {
+        setTimeout(function() {
+            $(".alerta").remove();
+        },3000);
+    });
+</script>
