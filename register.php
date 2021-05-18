@@ -3,13 +3,18 @@
 if(isset($_POST)){
     // database connection
     require_once 'includes/conexion.php';
-    session_start();
+
+    // only if the session does not exist
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    
     /* Check that the information arrives by post*/
     
-    $nombres = isset($_POST['nombres']) ? $_POST['nombres']: false;
-    $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : false;
-    $email = isset($_POST['email']) ? $_POST['email'] : false;
-    $password = isset($_POST['password']) ? $_POST['password'] : false;
+    $nombres = isset($_POST['nombres']) ? mysqli_real_escape_string($db, $_POST['nombres']) : false;
+    $apellidos = isset($_POST['apellidos']) ? mysqli_real_escape_string($db, $_POST['apellidos']) : false;
+    $email = isset($_POST['email']) ? mysqli_real_escape_string($db, $_POST['email']) : false;
+    $password = isset($_POST['password']) ? mysqli_real_escape_string($db, $_POST['password']) : false;
 
     // fails arrays
     $errrores = array();
