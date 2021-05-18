@@ -1,9 +1,9 @@
 
 <?php 
-
-session_start();
-
 if(isset($_POST)){
+    // database connection
+    require_once 'includes/conexion.php';
+    session_start();
     /* Check that the information arrives by post*/
     
     $nombres = isset($_POST['nombres']) ? $_POST['nombres']: false;
@@ -50,13 +50,28 @@ if(isset($_POST)){
     // If the error variable is empty
     if(count($errrores)==0){
         $save_users = true;
+
+        // Encrypt password
+        $security_password = password_hash($password, PASSWORD_BCRYPT, ['cost'=>4]);
+
         // Insert user in database
+        $sql = "INSERT INTO usuarios VALUES(null, '$nombres', '$apellidos', '$email', '$security_password', CURDATE());";
+        $query = mysqli_query($db, $sql);
+        
+        if($query){
+            $_SESSION['completado'] = 'El resitro se ha completado con éxito.';
+        }else{
+            $_SESSION['errores']['general'] = 'Fallo al guardar el usuario!.';
+            
+
+        }
 
     }else{
         $_SESSION['errores'] = $errrores;
-        header('Location: index.php');
+        
     }
 
 
 }
+header('Location: index.php');
 ?>

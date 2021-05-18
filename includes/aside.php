@@ -12,6 +12,17 @@
         </div>
         <div id="register" class="block-aside">
             <h3>Registrarse</h3>
+            <!-- MOSTRAR ERRORES -->
+            <?php if(isset($_SESSION['completado'])): ?>
+                <div class="alerta alerta-exito">
+                    <?=$_SESSION['completado']?>
+                </div>
+            <?php endif;  ?>
+            <?php if(isset($_SESSION['errores'] ['general'])):?>
+                <div class="alerta alerta-error">
+                    <?= $_SESSION['errores'] ['general']?>
+                </div>
+            <?php endif; ?>
             <form action="register.php" method="POST">
                 <label for="nombres">Nombre/s: </label>
                 <input type="text" name="nombres" id="nombres" />

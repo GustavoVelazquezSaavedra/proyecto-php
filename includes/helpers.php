@@ -10,10 +10,16 @@ function mostrarErrores($errrores, $campo){
 }
 
 function borrarErrores(){
-    $_SESSION['errores'] = null;
-    unset($_SESSION['errores']);
-
-    //return $borrado;
+    $borrado = false;
+    if(isset($_SESSION['errores'])){
+        //$_SESSION['errores'] = null;
+        unset($_SESSION['errores']);
+    }
+    if(isset( $_SESSION['completado'])){
+        //$_SESSION['completado'] = null;
+        unset($_SESSION['completado']);
+    }
+    return $borrado;
 }
 
 ?>
