@@ -1,5 +1,10 @@
 <?php require_once 'includes/helpers.php';?>
     <aside id="sidebar">
+    <?php if(isset($_SESSION['usuario'])):?>
+    <div id="user-logged" class="block-aside">
+        <h3>Bienvenido, <?= $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellido'];?></h3>
+    </div>
+    <?php endif; ?>
         <div id="login" class="block-aside">
             <h3>Identificarse</h3>
             <form action="login.php" method="POST">
