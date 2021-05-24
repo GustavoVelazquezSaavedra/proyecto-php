@@ -5,6 +5,12 @@ require_once './includes/conexion.php';
 
 // GET FORM DATA
 if(isset($_POST)){
+
+    // delete erro
+    if(isset($_SESSION['error_login'])){
+        unset($_SESSION['error_login']);
+    }
+    // form data
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
@@ -22,9 +28,7 @@ if(isset($_POST)){
         if($verify){
             // use a session for save userdata logged
             $_SESSION['usuario']= $usuario;
-            if(isset($_SESSION['error_login'])){
-                unset($_SESSION['error_login']);
-            }
+
         }else{
             //error
             $_SESSION['error_login'] = "Login incorrecto!. ";
