@@ -173,16 +173,16 @@ input[type="submit"],
 
 .boton-rojo{
     background: rgba(155, 25, 25, 0.911);
-    color: black;
+   
 }
 .boton-verde{
-    background: rgba(74, 218, 74, 0.918);
-    color: black;
+    background: rgba(43, 141, 43, 0.918);
+    
 }
 
 .boton-naranja{
     background: #be7a12;
-    color: black;
+  
 }
 
 /*PRINCIPAL*/
