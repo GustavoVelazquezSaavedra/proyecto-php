@@ -8,7 +8,7 @@ function mostrarErrores($errrores, $campo){
     }
     return $alerta;
 }
-
+// borrar errores
 function borrarErrores(){
     $borrado = false;
     if(isset($_SESSION['errores'])){
@@ -20,6 +20,32 @@ function borrarErrores(){
         unset($_SESSION['completado']);
     }
     return $borrado;
+}
+
+// conseguir categorias
+
+function conseguirCategorias($conexion){
+    $sql = "SELECT * FROM categorias ORDER BY id ASC;";
+    $categorias = mysqli_query($conexion, $sql);
+
+    $result = array();
+    if($categorias && mysqli_num_rows($categorias) >= 1){
+        $result = $categorias;
+    }
+    return $result;
+}
+
+function conseguirUltimasEntradas($conexion){
+    $sql = "SELECT e.*, c.* FROM entradas e INNER JOIN categorias c ON e.categoria_id = c.id ORDER BY e.id DESC LIMIT 4";
+    $entradas = mysqli_query($conexion,$sql);
+
+    $result = array();
+
+    if($entradas && mysqli_num_rows($entradas) >= 1){
+        $result = $entradas;
+    }
+
+    return $result;
 }
 
 ?>
