@@ -13,6 +13,7 @@
             <article class="tickets">
                 <a href="#">
                     <h2><?=$entrada['titulo']?></h2>
+                    <span class="date" ><?=$entrada['categoria']. ' | '.$entrada['fecha']?></span>
                     <p>
                         <?=substr($entrada['descripcion'], 0, 180)."..."?>
                     </p>
