@@ -12,15 +12,16 @@ function mostrarErrores($errrores, $campo){
 function borrarErrores(){
     $borrado = false;
     if(isset($_SESSION['errores'])){
-        //$_SESSION['errores'] = null;
-        unset($_SESSION['errores']);
+        $_SESSION['errores'] = null;
+        $borrado=true;
     }
     if(isset( $_SESSION['completado'])){
-        //$_SESSION['completado'] = null;
-        unset($_SESSION['completado']);
+        $_SESSION['completado'] = null;
+        $borrado=true;
     }
     if(isset( $_SESSION['Errores_entrada'])){
         $_SESSION['Errores_entrada'] = null;
+        $borrado = true;
         
     }
     return $borrado;

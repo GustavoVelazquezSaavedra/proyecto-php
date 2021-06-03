@@ -40,10 +40,16 @@ if(isset($_POST)){
     $save_users = false;
     // If the error variable is empty
     if(count($errrores)==0){
+        $usuario= $_SESSION['usuario'];
         $save_users = true;
 
+        // Comprobe if mail does not exists
+        $sql = "SELECT id, email FROM usuarios WHERE email = '$email';";
+        $isset_email =mysqli_query($db, $sql);
+        $isset_user= mysqli_fetch_assoc($isset_email);
+
+        if($isset_user['id']==$usuario['id'] || empty($isset_user)){
         // update user in database
-        $usuario = $_SESSION['usuario'];
         $ifl = $usuario['id'];
         $sql = "UPDATE usuarios SET nombre = '$nombres', apellido = '$apellidos', email= '$email' WHERE id ='$ifl'";
         $query = mysqli_query($db, $sql);
@@ -58,6 +64,9 @@ if(isset($_POST)){
             
 
         }
+    }else{
+        $_SESSION['errores']['general'] = 'El mail ingresado ya existe!.';
+    }
 
     }else{
         $_SESSION['errores'] = $errrores;
