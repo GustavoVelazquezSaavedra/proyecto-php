@@ -11,7 +11,7 @@
     ?>
 
             <article class="tickets">
-                <a href="#">
+                <a href="entrada.php?id=<?=$entrada['id']?>">
                     <h2><?=$entrada['titulo']?></h2>
                     <span class="date" ><?=$entrada['categoria']. ' | '.$entrada['fecha']?></span>
                     <p>

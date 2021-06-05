@@ -7,11 +7,11 @@
     <?php
     $entradas = conseguirEntradas($db,true,null);
     if (!empty($entradas)&& mysqli_num_rows($entradas)>0) :
-        while ($entrada = mysqli_fetch_assoc($entradas)) :
+        while ($entrada = mysqli_fetch_assoc($entradas)) :         
     ?>
 
             <article class="tickets">
-                <a href="#">
+                <a href="entrada.php?id=<?=$entrada['id']?>">
                     <h2><?=$entrada['titulo']?></h2>
                     <span class="date" ><?=$entrada['categoria']. ' | '.$entrada['fecha']?></span>
                     <p>
