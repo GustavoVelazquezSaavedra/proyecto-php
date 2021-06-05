@@ -40,13 +40,36 @@ function conseguirCategorias($conexion){
     return $result;
 }
 
-function conseguirEntradas($conexion, $limit = null){
-    $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e INNER JOIN categorias c ON e.categoria_id = c.id ORDER BY e.id DESC ";
+
+function conseguirCategoria($conexion,$id){
+    $sql = "SELECT * FROM categorias WHERE id= $id;";
+    $categorias = mysqli_query($conexion, $sql);
+
+    $result = array();
+    if($categorias && mysqli_num_rows($categorias) >= 1){
+        $result = mysqli_fetch_assoc($categorias);
+    }
+    return $result;
+}
+
+function conseguirEntradas($conexion, $limit = false, $categoria = null){
+    $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e INNER JOIN categorias c ON e.categoria_id = c.id ";
+
+    // sql for list category
+    if(isset($categoria)){
+        $sql .= "WHERE e.categoria_id = $categoria ";
+    }
+    // oder by after where
+    $sql .= "ORDER BY e.id DESC"; 
+
+  
+    //sql for index with limit
 
     if($limit){
         // $sql = $sql." limit 4";
         $sql .="LIMIT 4";
     }
+   
     $entradas = mysqli_query($conexion,$sql);
 
     $result = array();
@@ -57,7 +80,3 @@ function conseguirEntradas($conexion, $limit = null){
 
     return $result;
 }
-
-
-
-?>
