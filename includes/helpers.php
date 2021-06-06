@@ -52,12 +52,17 @@ function conseguirCategoria($conexion,$id){
     return $result;
 }
 
-function conseguirEntradas($conexion, $limit = false, $categoria = null){
+function conseguirEntradas($conexion, $limit = false, $categoria = null, $busqueda=null){
     $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e INNER JOIN categorias c ON e.categoria_id = c.id ";
 
     // sql for list category
     if(isset($categoria)){
         $sql .= "WHERE e.categoria_id = $categoria ";
+    }
+
+     // sql for search
+     if(!empty($busqueda)){
+        $sql .= "WHERE e.titulo LIKE '%$busqueda%' ";
     }
     // oder by after where
     $sql .= "ORDER BY e.id DESC "; 
@@ -90,4 +95,8 @@ function conseguirEntrada($conexion,$id){
         $result = mysqli_fetch_assoc($entrada);
     }
     return $result;
+}
+
+function buscarEntradas(){
+
 }
